@@ -8,6 +8,22 @@ p, a, li{
     color: rgb(60, 55, 54);
 }
 
+.orange{
+    color: #c72e13;
+}
+
+.blue{
+    color: #1c2f69
+}
+
+.title{
+    font-family: 'Gill Sans MT';
+    vertical-align: middle;
+    color:#a5081b;
+    font-size: 60;
+    margin-bottom: 0px;
+}
+
 li {
     margin-bottom: 12px;
     margin-top: 12px;
@@ -15,13 +31,54 @@ li {
 
 .header{
     color:#c72e13;
-    font-size: 30px;
-    font-family:'Franklin Gothic Medium';
+    font-size: 20px;
 }
 
-.button{
+/*navbar*/
+.nav ul {
+    list-style-type: none;
+    overflow:hidden;
+    background-color:#1c2f69;
     border-radius: 12px;
-    background-color: #ea764c;
+}
+.nav li {
+    display: inline-block;
+}
+        
+.nav li a {
+    display: inline-block;
+    font-family:arial;
+    text-decoration:none;
+    font-weight:900;
+    font-size:11px;
+    color: #608add;
+    padding: 12px 20px;
+    background-color: #1c2f69;
+    border-radius: 12px;
+    border: 4px solid #1c2f69;
+}
+.nav li a:hover {
+    color: f0e8e8;
+    padding: 12px 20px;
+    background-color: #e2241a;
+    border-top:4px solid #f27b3f;
+    border-left:4px solid #f27b3f;
+    border-right:4px solid #920606;
+    border-bottom:4px solid #920606;
+}
+.nav .active {
+    background-color: #05123a;
+    color:#cfd2e6;
+    padding: 12px 20px;
+    border-top:4px solid #061648;
+    border-left:4px solid #061648;
+    border-right:4px solid #2f4da5;
+    border-bottom:4px solid #2f4da5;
+}
+
+.button, .play_button{
+    border-radius: 12px;
+    background-color: #1B316D;
     border: none;
     color: #f0e8e8;
     padding: 8px;
@@ -34,8 +91,8 @@ li {
     font-size:11px;
     cursor: pointer;
     margin:5px;
-
 }
+
 .text_button {
     border-radius: 12px;
     background-color: #ea764c;
@@ -72,7 +129,7 @@ li {
 }
 
 .button:hover, .text_button:hover, .game_text_button:hover, .ref_text_button:hover {
-  background-color: #efa889;
+  background-color: #e2241a;
   color: #390707;
 }
 
@@ -81,12 +138,40 @@ li {
   transform: translateY(2px);
 }
 
-.logo_container, .img_container, .text_container{
+.logo_container, .img_container, .text_container, .nav{
     display:block;
     margin-left: auto;
     margin-right: auto;
     width: 60%;
-    padding: 30px;
+    padding: 10px;
+}
+
+.logo_container{
+    width: 90%;
+}
+
+.img_container{
+    position: relative;
+    margin-bottom: 10px;
+    background-color: #920606;
+    border-radius: 20px;
+}
+
+.play_button{
+    color:#608add;
+    background-color: #1B316D;
+    padding: 20px;
+    border-radius: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 50%;
+}
+
+.play_button:hover{
+    opacity: 100%;
+    border: 4px solid #f27b3f;
 }
 
 img {
@@ -116,11 +201,12 @@ img {
     align-items: center;
 }
 
-.game_content {
+.gamestuff {
     display:flex;
     flex-direction: column;
     border-radius: 20px;
     background-color: #390707;
+    padding:40px;
     justify-content: center;
     align-items: center;
     text-align: center;
