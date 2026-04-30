@@ -3,6 +3,7 @@ console.log("play.js loaded");
 const defaultState = {
     teacher: false,
     politics: false,
+    underground: false,
     hasRegret: false,
     regret: 0,
 };
@@ -79,7 +80,7 @@ const game = [
                 }
             },
             {
-                condition: () => state.earlyOffending === true,
+                condition: () => state.teacher === true,
                 label: "Ponder if this could be true and reach out to your therapist.",
                 effect: function() {
                     endGame();
@@ -87,6 +88,62 @@ const game = [
             }
         ],
     },
+    { type: "image", src: "" }, //[[guy by himself]] 
+    { type: "text", content: "You are still 19. You are isolating yourself from friends and family." }, 
+    { type: "image", src: "" }, //[[olympics symbol]] 
+    { type: "choice", content: "You are 20. You witness the bombing attacks at the 1996 Atlanta Olympics on the news. You...",
+        choices: [
+            {
+                label:"Wonder why no one has ever done this at the Notting Hill carnival. You tell your psychiatrist, 'I am the first domino. Everything else will fall.'",
+            },
+            {
+                label:"Feel horrible about the loss of life.",
+                effect: function() {
+                    state.regret++;
+                }
+            }
+        ],
+    }, 
+    { type: "image", src: "" }, //[[london underground logo]] 
+    { type: "text", content: "You are 21. After a series of failed jobs, your father gets you a job as an engineer’s assistant with the London Underground." }, 
+    { type: "image", src: "" }, //[[a flyer, join the BNP we have tea and crumpets and scones and beans on toast]] 
+    { type: "choice", content: "You decide to join the British National Party (BNP), a far-right, fascist political party. You attend two meetings and get to know some of the senior leaders. The party, while racist, does not believe in paramilitary action. You...",
+        choices: [
+            {
+                label:"Stay the course and get involved in party politics.",
+                effect: function() {
+                    state.politics = true;
+                    endGame();
+                }
+            },
+            {
+                label: "Leave the party. Extreme and violent action must be taken to preserve the white British race.",
+            },
+        ],
+    },
+    { type: "image", src: "" }, //[[tony (not hot) smiling evillly]] 
+    { type: "choice", content: "You are 22. Your acquaintance Tony Williams invites you to attend a meeting of the National Socialist Movement (NSM), one of Britain’s up-and-coming neo-Nazi groups. You...",
+        choices: [
+            {
+                label: "Agree to check it out. You are done with playing it safe and want to take drastic action.",
+            },
+            {
+                condition: () => state.regret > 3,
+                label: "Don’t follow up. Nazis are a step too extreme for you.",
+                effect: function() {
+                    state.underground = true;
+                    endGame();
+                }
+            },
+        ],
+    },
+    { type: "text", content: "You start reading books like The Turner Diaries and The Anarchist Cookbook." }, 
+    { type: "text", content: "The Anarchist Cookbook is too complex for you to understand, so you read a copy of How to Make Bombs, Part 2 on the internet." },
+    { type: "text", content: "You become an involved member of the NSM. You are appointed regional leader of Hampshire and are in charge of about 12 members." }, 
+    { type: "image", src: "" }, //[[pills]] 
+    { type: "text", content: "You see a doctor about your anxiety attacks, and they prescribe you antidepressants. You tell the doctor that you feel like you are losing your mind." },
+    { type: "text", content: "You have had enough of talking about change. Now you want to enact it. You want to start a race war." },
+
 
     { type: "image", src: "./static/images/soc2189_test.png" },
     { type: "image", src: "./static/images/soc2189_test.png" },
@@ -151,27 +208,31 @@ function renderStep(){
         gamestuff.appendChild(p);
 
         step.choices.forEach(function(choice){
-            const btn = document.createElement("button");
-            btn.classList.add("game_text_button");
-            btn.textContent = choice.label;
-            btn.onclick = function (e) {
-                e.stopPropagation();
-                if(choice.effect)
-                    choice.effect();
-                //conditions only flip once
-                if (choice.setTeacher && !state.teacher) {
-                    state.teacher = true;
-                }
-                if (choice.setPolitics && !state.politics) {
-                    state.politics = true;
-                }
-                if(state.regret > 3 && !state.hasRegret){
-                    state.hasRegret = true;
-                }
-                advance();
-            };
-            if(!step.choices.condition || step.choices.condition())
+            if(!choice.condition || choice.condition()){
+            
+                const btn = document.createElement("button");
+                btn.classList.add("game_text_button");
+                
+                btn.textContent = choice.label;
+                btn.onclick = function (e) {
+                    e.stopPropagation();
+                    if(choice.effect)
+                        choice.effect();
+                    //conditions only flip once
+                    if (choice.setTeacher && !state.teacher) {
+                        state.teacher = true;
+                    }
+                    if (choice.setPolitics && !state.politics) {
+                        state.politics = true;
+                    }
+                    if(state.regret > 3 && !state.hasRegret){
+                        state.hasRegret = true;
+                    }
+                    advance();
+                };
+                
                 gamestuff.appendChild(btn);
+            }
         });
     }
 }
