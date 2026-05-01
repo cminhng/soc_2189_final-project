@@ -134,10 +134,10 @@ li {
     margin:8px;
 }
 
-/* .button:hover, .text_button:hover, .game_text_button:hover, .ref_text_button:hover {
+.button:hover, .text_button:hover, .game_text_button:hover, .ref_text_button:hover {
   background-color: #e2241a;
   color: #390707;
-} */
+}
 
 /* .button:active, .text_button:active, .game_text_button:active, .ref_text_button:active {
   box-shadow: 0 2px #9e3320;
@@ -252,17 +252,19 @@ img {
     padding:20px;
 }
 
-.addendum_text{
-    font-family: gill sans mt;
-    color:#1B316D;
-}
-
-.references{
+.references, .analysis{
     padding:15%;
     padding-top: 0;
 }
 
-p .references{
+.addendum_text, .reference_text{
     font-family: gill sans mt;
     color:#1B316D;
+}
+
+
+.analysis_header{
+    font-family: gill sans mt;
+    font-weight:900;
+    font-size: 30px;
 }
