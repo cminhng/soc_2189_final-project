@@ -22,10 +22,13 @@ function calculateOutcome(state) {
     if(state.hasRegret){
         return 4;
     }
-    if(state.teacher){
-        return 0;
+    if(state.end){
+        return 3;
     }
-    return 3;
+    // if(state.teacher){
+    //     return 0;
+    // }
+    return 0;
     
 }
 

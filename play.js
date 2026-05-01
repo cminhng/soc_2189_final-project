@@ -6,6 +6,7 @@ const defaultState = {
     underground: false,
     hasRegret: false,
     regret: 0,
+    end: false,
 };
 
 let state = { ...defaultState };
@@ -192,6 +193,7 @@ const game = [
             {
                 label: "'No. I did what I needed to do to preserve the white race.'",
                 effect: function() {
+                    state.end = true;
                     //endGame();
                 }
             },
@@ -300,7 +302,7 @@ function renderStep(){
 }
 
 function advance(){
-    if(stepIndex > game.length){
+    if(stepIndex >= game.length){
         endGame();
         return;
     }
