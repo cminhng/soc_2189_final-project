@@ -22,10 +22,10 @@ let wait = false;
 
 const game = [
     { type: "header", content: "EARLY LIFE" },
-    { type: "image", src: "./static/images/soc2189_test.png" },
+    { type: "image", src: "./static/images/familyphoto.png" },
     { type: "text", content: "You are born into a working-class British family. Your father is a train driver, and your mother is a homemaker. You have two brothers, one older and one younger." },
     { type: "text", content: "Your home environment seems to be stable. You are a quiet child at school and at home." },
-    { type: "image", src: "" }, //[[small kid standing away from group]] 
+    { type: "image", src: "./static/images/bully.jpg" }, //[[small kid standing away from group]] 
     { type: "text", content: "You are 12. You start reading about Hitler and dream about sadistic scenarios in which you are an SS officer.",
         add:[
             "Following his arrest, Copeland admitted this to psychiatrists."
@@ -36,11 +36,11 @@ const game = [
         choices: [
             {
                 label: "Punch them and fight back. No one is going to make you feel puny.",
-                effect: function () {
-                    insertSteps([
-                        { type: "image", src: "./static/images/soc2136_final_home7.png" },
-                    ]);
-                }
+                // effect: function () {
+                //     insertSteps([
+                //         { type: "image", src: "./static/images/soc2136_final_home7.png" },
+                //     ]);
+                // }
             },
             {
                 label: "Be the bigger person and try to tolerate it as best you can.",
@@ -51,13 +51,13 @@ const game = [
                     state.regret++;
                     state.teacher = true;
                     insertSteps([
-                        { type: "image", src: "./static/images/soc2136_final_home7.png" },
+                        { type: "image", src: "./static/images/teacher.png" },
                     ]);
                 }
             }
         ]
     },
-    { type: "image", src: "" }, //[[The Flintstones]] 
+    { type: "image", src: "./static/images/flintstones.jpg" }, //[[The Flintstones]] 
     { type: "choice", content:"You are 13. You watch The Flintstones and hear your parents sing along to the part of the theme song that goes 'we'll have a gay old time.' You... ", 
         choices: [
             {
@@ -75,7 +75,7 @@ const game = [
         ],
     },
     { type: "text", content: "You are 16. You decide to drop out of school and work odd jobs."},
-    { type: "image", src: "" }, //[[Your grandmother]] 
+    { type: "image", src: "./static/images/grandma.png"}, //[[Your grandmother]] 
     { type: "choice", content:"You are 19. Your parents divorce. Your grandmother asks why you don’t have a girlfriend, and if it’s because you like boys. You...", 
         choices: [
             {
@@ -96,9 +96,9 @@ const game = [
             }
         ],
     },
-    { type: "image", src: "" }, //[[guy by himself]] 
+    { type: "image", src: "./static/images/isolation.jpg" }, //[[guy by himself]] 
     { type: "text", content: "You are still 19. You are isolating yourself from friends and family." }, 
-    { type: "image", src: "" }, //[[olympics symbol]] 
+    { type: "image", src: "./static/images/olympics.png" }, //[[olympics symbol]] 
     { type: "choice", content: "You are 20. You witness the bombing attacks at the 1996 Atlanta Olympics on the news. You...",
         choices: [
             {
@@ -112,9 +112,9 @@ const game = [
             }
         ],
     }, 
-    { type: "image", src: "" }, //[[london underground logo]] 
+    { type: "image", src: "./static/images/underground.png" }, //[[london underground logo]] 
     { type: "text", content: "You are 21. After a series of failed jobs, your father gets you a job as an engineer’s assistant with the London Underground." }, 
-    { type: "image", src: "" }, //[[a flyer, join the BNP we have tea and crumpets and scones and beans on toast]] 
+    { type: "image", src: "./static/images/bnp.jpg" }, //[[a flyer, join the BNP we have tea and crumpets and scones and beans on toast]] 
     { type: "choice", content: "You decide to join the British National Party (BNP), a far-right, fascist political party. You attend two meetings and get to know some of the senior leaders. The party, while racist, does not believe in paramilitary action. You...",
         choices: [
             {
@@ -129,7 +129,7 @@ const game = [
             },
         ],
     },
-    { type: "image", src: "" }, //[[tony (not hot) smiling evillly]] 
+    //{ type: "image", src: "" }, //[[tony (not hot) smiling evillly]] 
     { type: "choice", content: "You are 22. Your acquaintance Tony Williams invites you to attend a meeting of the National Socialist Movement (NSM), one of Britain’s up-and-coming neo-Nazi groups. You...",
         choices: [
             {
@@ -151,7 +151,7 @@ const game = [
     { type: "text", content: "You start reading books like The Turner Diaries and The Anarchist Cookbook." }, 
     { type: "text", content: "The Anarchist Cookbook is too complex for you to understand, so you read a copy of How to Make Bombs, Part 2 on the internet." },
     { type: "text", content: "You become an involved member of the NSM. You are appointed regional leader of Hampshire and are in charge of about 12 members." }, 
-    { type: "image", src: "" }, //[[pills]] 
+    { type: "image", src: "./static/images/pills.png" }, //[[pills]] 
     { type: "text", content: "You see a doctor about your anxiety attacks, and they prescribe you antidepressants. You tell the doctor that you feel like you are losing your mind." },
     { type: "text", content: "You have had enough of talking about change. Now you want to enact it. You want to start a race war.",
         add: [
@@ -161,17 +161,17 @@ const game = [
     },
     //addendum: white supremacy + in/out groups
     { type: "header", content: "THE NAIL BOMBINGS" },
-    { type: "image", src: "" }, //[[photo after Brixton bomb]] 
+    { type: "image", src: "./static/images/Brixton-bomb-1.webp" }, //[[photo after Brixton bomb]] 
     { type: "text", content: "The first of the three nail bombings was carried out on Saturday, April 17, 1999, in Electric Avenue, Brixton. This location was chosen because of the area’s large Black population. The bomb, created using explosives from fireworks and 4-inch nails, was left in a sports bag at Brixton Market. The traders at the market were suspicious of the bag, and it was moved three separate times due to this. After the third move, the bag was left next to the Iceland supermarket. Worried traders called the police, who arrived just as the bomb went off at 5:25 pm. 48 people were injured, many seriously. " },
-    { type: "image", src: "" }, //[[photo after Brick Lane bomb]] 
+    { type: "image", src: "./static/images/bricklane.jpg" }, //[[photo after Brick Lane bomb]] 
     { type: "text", content: "On Saturday April 24th, Copeland’s second bombing hit the Bangladeshi community in East London. Copeland intended to strike when the streets were busiest, but mistook Saturday for the busiest market day instead of Sunday. He left the bomb in a sports bag where a random passerby noticed it and put it in the trunk of a car before calling the police. Shortly after, it exploded, causing 13 injuries and severe damage to surrounding cars and buildings." },
-    { type: "image", src: "" }, //[[photo after Soho bomb]] 
+    { type: "image", src: "./static/images/admiralduncan.jpg" }, //[[photo after Soho bomb]] 
     { type: "text", content: "The third attack occured on April 30th in front of Admiral Duncan pub on Old Compton Street in Soho, the heart of London's gay community. Because it was a holiday weekend, the pub and street outside was crowded—resulting in 79 injuries, many serious, and three casualties, making it the deadliest of the three attacks."},
 
     { type: "header", content: "ARREST, TRIAL, & LIFE IN PRISON" },
     { type: "text", content: "The police find you in your home. You have no choice but to confess. You show the officers your Nazi paraphernalia." }, 
-    { type: "image", src: "" }, //[[photo of his room]] 
-    { type: "image", src: "" }, //[[gavel]] 
+    { type: "image", src: "./static/images/bedroom-3.png" }, //[[photo of his room]] 
+    { type: "image", src: "./static/images/gavel.png" }, //[[gavel]] 
     { type: "text", content: "Your lawyers try to use your history of mental illness to argue that you can not be held fully liable for your actions." },
     { type: "text", content: "In the first hearing, you plead guilty. You say, 'Not guilty to murder, guilty to manslaughter.'" },
     { type: "choice", content: "A woman in the public gallery bursts into tears and screams, 'You bastard! You bastard!' You...",
@@ -192,7 +192,7 @@ const game = [
             {
                 label: "'No. I did what I needed to do to preserve the white race.'",
                 effect: function() {
-                    endGame();
+                    //endGame();
                 }
             },
             {
@@ -200,11 +200,12 @@ const game = [
                 label: "Nothing. You hang your head in shame.",
                 effect: function() {
                     state.hasRegret = true;
-                    endGame();
+                    //endGame();
                 }
             },
         ],
     },
+    { type: "image", src: "./static/images/jail.png" },
 ];
 
 function clearContent(){
@@ -223,7 +224,7 @@ function renderStep(){
     if (!step) {
         const p = document.createElement("p");
         p.classList.add("game_p");
-        p.textContent = "you've reached the end.";
+        p.textContent = "you've reached the end. click again to see your outcome.";
         gamestuff.appendChild(p);
         return;
     }
