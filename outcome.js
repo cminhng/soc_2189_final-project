@@ -13,9 +13,6 @@ const outcomes = [
 function calculateOutcome(state) {
     if(!state)
         return -1;
-    if(state.teacher){
-        return 0;
-    }
     if(state.politics){
         return 1;
     }
@@ -24,6 +21,9 @@ function calculateOutcome(state) {
     }
     if(state.hasRegret){
         return 4;
+    }
+    if(state.teacher){
+        return 0;
     }
     return 3;
     
