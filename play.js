@@ -25,12 +25,12 @@ const game = [
     { type: "image", src: "./static/images/familyphoto.png" },
     { type: "text", content: "You are born into a working-class British family. Your father is a train driver, and your mother is a homemaker. You have two brothers, one older and one younger." },
     { type: "text", content: "Your home environment seems to be stable. You are a quiet child at school and at home." },
-    { type: "image", src: "./static/images/bully.jpg" }, //[[small kid standing away from group]] 
     { type: "text", content: "You are 12. You start reading about Hitler and dream about sadistic scenarios in which you are an SS officer.",
         add:[
             "Following his arrest, Copeland admitted this to psychiatrists."
         ],
     },
+    { type: "image", src: "./static/images/bully.jpg" },
     { type: "choice",
         content: "You feel isolated from your classmates and have few friends. You are short, and the other children at school push you around. You...",
         choices: [
