@@ -15,6 +15,7 @@ function resetState(){
 }
 
 const gamestuff = document.querySelector(".gamestuff");
+const addendum = document.querySelector(".addendum");
 
 let stepIndex = 0;
 let wait = false;
@@ -128,7 +129,7 @@ const game = [
                 label: "Agree to check it out. You are done with playing it safe and want to take drastic action.",
             },
             {
-                condition: () => state.regret > 3,
+                condition: () => state.regret > 1,
                 label: "Don’t follow up. Nazis are a step too extreme for you.",
                 effect: function() {
                     state.underground = true;
@@ -142,18 +143,63 @@ const game = [
     { type: "text", content: "You become an involved member of the NSM. You are appointed regional leader of Hampshire and are in charge of about 12 members." }, 
     { type: "image", src: "" }, //[[pills]] 
     { type: "text", content: "You see a doctor about your anxiety attacks, and they prescribe you antidepressants. You tell the doctor that you feel like you are losing your mind." },
-    { type: "text", content: "You have had enough of talking about change. Now you want to enact it. You want to start a race war." },
+    { type: "text", content: "You have had enough of talking about change. Now you want to enact it. You want to start a race war.",
+        add: [
+            "WHITE SUPREMACY: According to The Turner Diaries, the year 2000 was the year that a racial uprising would occur and racial violence would take to the streets. Copeland wanted to kickstart this to cause people of color to retaliate and white people to vote for the British National Party in response. This is the final aspect that makes Copeland’s attacks explicitly white supremacist. He was anti-government and anti-democratic, as his goal was to bypass the regular election processes entirely and violently influence it. He was very exclusionary and supremacist, as he stated that he believed in 'the master race' (BBC, 2000). He also believed in existential threats and conspiracy theories, as he thought that white people were in danger from ethnic minorities who had emigrated to the UK. And this final aspect of his attacks being inspired by The Turner Diaries proves his belief in apocalyptic fantasies. His goal was to emulate a dystopian society to create one where whites would rule.",
+            "INGROUPS AND OUTGROUPS: Extremists view the group that they identify with as the in-group, and view other groups as out-groups. What makes extremists different from other people is that they believe that the survival of their in-group necessitates the destruction of all members of the out-group. In Copeland’s case, his in-group was white people, and his out-groups were ethnic minorities and LGBTQ+ people. For the white race in Britain to survive, Copeland found it necessary and justified to murder members of the out-group.",
+        ],
+    },
+    //addendum: white supremacy + in/out groups
+    { type: "header", content: "THE NAIL BOMBINGS" },
+    { type: "image", src: "" }, //[[photo after Brixton bomb]] 
+    { type: "text", content: "The first of the three nail bombings was carried out on Saturday, April 17, 1999, in Electric Avenue, Brixton. This location was chosen because of the area’s large Black population. The bomb, created using explosives from fireworks and 4-inch nails, was left in a sports bag at Brixton Market. The traders at the market were suspicious of the bag, and it was moved three separate times due to this. After the third move, the bag was left next to the Iceland supermarket. Worried traders called the police, who arrived just as the bomb went off at 5:25 pm. 48 people were injured, many seriously. " },
+    { type: "image", src: "" }, //[[photo after Brick Lane bomb]] 
+    { type: "text", content: "Brick Lane" },
+    { type: "image", src: "" }, //[[photo after Soho bomb]] 
+    { type: "text", content: "Soho" },
 
-
-    { type: "image", src: "./static/images/soc2189_test.png" },
-    { type: "image", src: "./static/images/soc2189_test.png" },
-    { type: "image", src: "./static/images/soc2189_test.png" },
-    { type: "image", src: "./static/images/soc2189_test.png" },
-    { type: "text", content: "Hello!" },
+    { type: "header", content: "ARREST, TRIAL, & LIFE IN PRISON" },
+    { type: "text", content: "The police find you in your home. You have no choice but to confess. You show the officers your Nazi paraphernalia." }, 
+    { type: "image", src: "" }, //[[photo of his room]] 
+    { type: "image", src: "" }, //[[gavel]] 
+    { type: "text", content: "Your lawyers try to use your history of mental illness to argue that you can not be held fully liable for your actions." },
+    { type: "text", content: "In the first hearing, you plead guilty. You say, 'Not guilty to murder, guilty to manslaughter.'" },
+    { type: "choice", content: "A woman in the public gallery bursts into tears and screams, 'You bastard! You bastard!' You...",
+        choices: [
+            {
+                label: "Turn to look at her and smile.",
+            },
+            {
+                label: "Look down at your feet.",
+                effect: function() {
+                    state.regret++;
+                }
+            },
+        ],
+    },
+    { type: "choice", content: "At the second hearing, the prosecution asks if you have any regrets for what you have done. You say...",
+        choices: [
+            {
+                label: "'No. I did what I needed to do to preserve the white race.'",
+                effect: function() {
+                    endGame();
+                }
+            },
+            {
+                condition: () => state.regret > 3,
+                label: "Nothing. You hang your head in shame.",
+                effect: function() {
+                    state.hasRegret = true;
+                    endGame();
+                }
+            },
+        ],
+    },
 ];
 
 function clearContent(){
   gamestuff.innerHTML = "";
+  addendum.innerHTML = "";
 }
 
 function renderStep(){
@@ -164,18 +210,23 @@ function renderStep(){
 
     console.log("Rendering step ", stepIndex);
 
-    // if (step.condition && !step.condition()) {
-    //     stepIndex += 1;
-    //     renderStep();
-    //     return;
-    // }
-
     if (!step) {
         const p = document.createElement("p");
         p.classList.add("game_p");
         p.textContent = "you've reached the end.";
         gamestuff.appendChild(p);
         return;
+    }
+
+    if(step.add){
+        console.log("addendum exists");
+        for (let i = 0; i < step.add.length; i++) {
+            const p = document.createElement("p");
+            p.classList.add("addendum_text");
+            p.textContent = step.add[i];
+            console.log("Rendering addendum: ", p.textContent);
+            addendum.appendChild(p);
+        }
     }
 
     if (step.type === "text") {
