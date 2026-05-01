@@ -21,12 +21,16 @@ let stepIndex = 0;
 let wait = false;
 
 const game = [
-    { type: "image", src: "./static/images/soc2189_test.png" },
     { type: "header", content: "EARLY LIFE" },
+    { type: "image", src: "./static/images/soc2189_test.png" },
     { type: "text", content: "You are born into a working-class British family. Your father is a train driver, and your mother is a homemaker. You have two brothers, one older and one younger." },
-    { type: "text", content: "Your environment seems to be stable. You are a quiet child at school and at home." },
+    { type: "text", content: "Your home environment seems to be stable. You are a quiet child at school and at home." },
     { type: "image", src: "" }, //[[small kid standing away from group]] 
-    { type: "text", content: "You are 12. You start reading about Hitler and dream about sadistic scenarios in which you are an SS officer. " },
+    { type: "text", content: "You are 12. You start reading about Hitler and dream about sadistic scenarios in which you are an SS officer.",
+        add:[
+            "Following his arrest, Copeland admitted this to psychiatrists."
+        ],
+    },
     { type: "choice",
         content: "You feel isolated from your classmates and have few friends. You are short, and the other children at school push you around. You...",
         choices: [
@@ -54,7 +58,7 @@ const game = [
         ]
     },
     { type: "image", src: "" }, //[[The Flintstones]] 
-    { type: "choice", content:"You are 13. You watch The Flintstones and hear the part of the theme song that goes 'we'll have a gay old time.' You... ", 
+    { type: "choice", content:"You are 13. You watch The Flintstones and hear your parents sing along to the part of the theme song that goes 'we'll have a gay old time.' You... ", 
         choices: [
             {
                 label: "Know that they are speaking to you and calling you gay.",
@@ -65,6 +69,9 @@ const game = [
                     state.regret++;
                 }
             }
+        ],
+        add:[
+            "Later, Copeland would go on to target the LGBTQ community in his nail-bombing spree. Several sources cite that Copeland was grappling with his sexuality himself, and that was a key motivation. Also, we did not make this up about the Flintstones (Ryan 2004)."
         ],
     },
     { type: "text", content: "You are 16. You decide to drop out of school and work odd jobs."},
@@ -82,7 +89,7 @@ const game = [
             },
             {
                 condition: () => state.teacher === true,
-                label: "Ponder if this could be true and reach out to your therapist.",
+                label: "Ponder if this could be true and reach out to your therapist to work through your internalized homophobia.",
                 effect: function() {
                     endGame();
                 }
@@ -103,6 +110,9 @@ const game = [
                     state.regret++;
                 }
             }
+        ],
+        add:[
+            "Copeland was specifically inspired by the 1996 Atlanta Olympics pipe bombings by the far-right. His immediate idea was to bomb the annual Notting Hill Carnival."
         ],
     }, 
     { type: "image", src: "" }, //[[london underground logo]] 
@@ -137,6 +147,9 @@ const game = [
                 }
             },
         ],
+        add: [
+            "FAR RIGHT: Copeland was deeply influenced by far-right ideologies, particularly neo-Nazi and white supremacist literature; he held ethnic supremacist beliefs that drove him to target minority communities, in particular Black, Bangladeshi, and LGBTQ. In response to being asked why he targeted Black and South Asian communities, Copeland was quoted saying, “Because I don’t like them. I want them out of this country. I’m a national socialist, Nazi, whatever you want to call me, I believe in the master race” (Margaritoff 2021). As for the queer community, he saw them as “degenerates.”"
+        ],
     },
     { type: "text", content: "You start reading books like The Turner Diaries and The Anarchist Cookbook." }, 
     { type: "text", content: "The Anarchist Cookbook is too complex for you to understand, so you read a copy of How to Make Bombs, Part 2 on the internet." },
@@ -154,9 +167,9 @@ const game = [
     { type: "image", src: "" }, //[[photo after Brixton bomb]] 
     { type: "text", content: "The first of the three nail bombings was carried out on Saturday, April 17, 1999, in Electric Avenue, Brixton. This location was chosen because of the area’s large Black population. The bomb, created using explosives from fireworks and 4-inch nails, was left in a sports bag at Brixton Market. The traders at the market were suspicious of the bag, and it was moved three separate times due to this. After the third move, the bag was left next to the Iceland supermarket. Worried traders called the police, who arrived just as the bomb went off at 5:25 pm. 48 people were injured, many seriously. " },
     { type: "image", src: "" }, //[[photo after Brick Lane bomb]] 
-    { type: "text", content: "Brick Lane" },
+    { type: "text", content: "On Saturday April 24th, Copeland’s second bombing hit the Bangladeshi community in East London. Copeland intended to strike when the streets were busiest, but mistook Saturday for the busiest market day instead of Sunday. He left the bomb in a sports bag where a random passerby noticed it and put it in the trunk of a car before calling the police. Shortly after, it exploded, causing 13 injuries and severe damage to surrounding cars and buildings." },
     { type: "image", src: "" }, //[[photo after Soho bomb]] 
-    { type: "text", content: "Soho" },
+    { type: "text", content: "The third attack occured on April 30th in front of Admiral Duncan pub on Old Compton Street in Soho, the heart of London's gay community. Because it was a holiday weekend, the pub and street outside was crowded—resulting in 79 injuries, many serious, and three casualties, making it the deadliest of the three attacks."},
 
     { type: "header", content: "ARREST, TRIAL, & LIFE IN PRISON" },
     { type: "text", content: "The police find you in your home. You have no choice but to confess. You show the officers your Nazi paraphernalia." }, 
