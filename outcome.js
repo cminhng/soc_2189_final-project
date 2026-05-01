@@ -19,11 +19,11 @@ function calculateOutcome(state) {
     if(state.underground){
         return 2;
     }
-    if(state.hasRegret){
-        return 4;
-    }
     if(state.end){
         return 3;
+    }
+    if(state.hasRegret){
+        return 4;
     }
     // if(state.teacher){
     //     return 0;
