@@ -111,9 +111,6 @@ const game = [
                 }
             }
         ],
-        add:[
-            "Copeland was specifically inspired by the 1996 Atlanta Olympics pipe bombings by the far-right. His immediate idea was to bomb the annual Notting Hill Carnival."
-        ],
     }, 
     { type: "image", src: "" }, //[[london underground logo]] 
     { type: "text", content: "You are 21. After a series of failed jobs, your father gets you a job as an engineer’s assistant with the London Underground." }, 
